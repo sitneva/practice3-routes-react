@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom';
 
 import Courses from './containers/Courses/Courses';
 import Course from './containers/Course/Course';
 import Users from './containers/Users/Users';
+import NotFound from './containers/NotFound/NotFound';
 
 class App extends Component {
   render () {
@@ -13,8 +14,9 @@ class App extends Component {
 
             <Switch>
               <Route path="/users"  component={Users} />
-              <Route path="/courses/:courseId" component={Course} />
               <Route path="/courses" component={Courses} />
+              <Redirect from='/all-components' to="/courses" />
+              <Route component={NotFound} />
             </Switch>
 
             <nav>
